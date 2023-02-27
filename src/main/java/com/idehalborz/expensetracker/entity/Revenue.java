@@ -21,5 +21,7 @@ public class Revenue {
     @ManyToOne
     @JoinColumn(name="accountId")
     private Account account;
-    private int sourceId;
+    @ManyToOne
+    @JoinColumn(name="revenueSourceId")
+    private RevenueSource revenueSource;
 }
