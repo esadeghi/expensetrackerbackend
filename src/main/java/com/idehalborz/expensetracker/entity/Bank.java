@@ -1,9 +1,6 @@
 package com.idehalborz.expensetracker.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,5 +15,7 @@ public class Bank {
     private int id;
     private String name;
     private String branch;
-    private int bankId;
+    @ManyToOne
+    @JoinColumn(name="bankId")
+    private Bank bank;
 }
