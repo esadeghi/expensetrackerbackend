@@ -1,9 +1,6 @@
 package com.idehalborz.expensetracker.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +18,8 @@ public class Revenue {
     private String name;
     private LocalDateTime date;
     private byte earnType;
-    private int accountId;
+    @ManyToOne
+    @JoinColumn(name="accountId")
+    private Account account;
     private int sourceId;
 }
