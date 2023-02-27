@@ -1,8 +1,8 @@
 package com.idehalborz.expensetracker.repository;
 
-import com.idehalborz.expensetracker.entity.User;
+import com.idehalborz.expensetracker.entity.AppUser;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<User, Integer> {
-    User findbyemail(String email);
+public interface UserRepository extends CrudRepository<AppUser, Integer> {
+    AppUser findbyemail(String email);
 }
