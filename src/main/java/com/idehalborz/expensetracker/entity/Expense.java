@@ -23,5 +23,5 @@ public class Expense {
 
     @ManyToOne
     @JoinColumn(name = "userId")
-    private User user;
+    private AppUser user;
 }
