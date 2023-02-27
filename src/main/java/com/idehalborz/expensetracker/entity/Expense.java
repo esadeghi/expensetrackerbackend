@@ -13,7 +13,9 @@ public class Expense {
 
     private String publicId;
     private String name;
-    private short expenseTypeId;
+    @ManyToOne
+    @JoinColumn(name="expenseTypeId")
+    private ExpenseType expenseType;
     private byte purchaseBy;
     private LocalDateTime date;
     private BigDecimal amount;
