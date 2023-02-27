@@ -16,4 +16,10 @@ public class SecurityConfig {
         http.authorizeHttpRequests(auth -> auth.requestMatchers("/user").permitAll()).httpBasic(Customizer.withDefaults());
         return http.build();
     }
+
+    @Bean
+    public PasswordEncoder passwordEncoder()
+    {
+        return new BCryptPasswordEncoder();
+    }
 }
