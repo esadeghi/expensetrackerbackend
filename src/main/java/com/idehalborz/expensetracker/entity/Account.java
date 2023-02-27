@@ -18,6 +18,6 @@ public class Account {
     private int id;
     private String name;
     private String accountNumber;
-    private byte bankId;
+    private short bankId;
     private byte accountType;
 }
