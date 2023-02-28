@@ -2,6 +2,7 @@ package com.idehalborz.expensetracker.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,7 +14,8 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(auth -> auth.requestMatchers("/users").permitAll()).httpBasic(Customizer.withDefaults());
+        http.authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST,    "/users").permitAll().anyRequest().authenticated())
+                .csrf().disable().httpBasic(Customizer.withDefaults());
         return http.build();
     }
 
@@ -22,4 +24,6 @@ public class SecurityConfig {
     {
         return new BCryptPasswordEncoder();
     }
+
+
 }
