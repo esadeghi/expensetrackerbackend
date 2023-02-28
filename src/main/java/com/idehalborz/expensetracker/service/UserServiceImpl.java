@@ -27,8 +27,13 @@ public class UserServiceImpl implements UserService{
         _passwordEncoder = passwordEncoder;
     }
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new User(username,"", new ArrayList());
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        AppUser appUser = _userRepository.findByemail(email);
+        if(appUser == null)
+        {
+            throw new UsernameNotFoundException(email);
+        }
+        return new User(email, appUser.getPassword(), new ArrayList<>());
     }
 
     @Override
